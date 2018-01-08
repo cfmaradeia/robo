@@ -7,7 +7,7 @@
     </appender>
 
     <logger name="com.contaazul.robo" level="DEBUG" />
-    
+
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
