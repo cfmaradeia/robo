@@ -1,5 +1,7 @@
 package com.contaazul.robo.controller;
 
+import com.contaazul.robo.model.Coordinate;
+import com.contaazul.robo.model.Robot;
 import com.contaazul.robo.service.MovementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +23,10 @@ public class MovementController {
         this.movementService = movementService;
     }
 
-    @RequestMapping(value = "/mars/{command}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/mars/{command}",method = RequestMethod.POST)
     public void move(@PathVariable String command){
         LOGGER.info("Start request in endpoint /mars/{}", command);
-        movementService.toMove(command);
+        movementService.moveRobot(command, new Robot(0, 0, Coordinate.N));
     }
 
 }
