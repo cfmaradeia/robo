@@ -6,7 +6,6 @@ import com.contaazul.robo.model.Coordinate;
 import com.contaazul.robo.model.Land;
 import com.contaazul.robo.model.Movement;
 import com.contaazul.robo.model.Robot;
-import org.springframework.beans.BeanUtils;
 
 public class AccelarationMovementType implements MovementType {
 
@@ -15,7 +14,7 @@ public class AccelarationMovementType implements MovementType {
     public Robot execute(final String command, final Robot robot) {
 
         if((! command.equals(Movement.M.name())) || (robot == null)){
-            throw new InvalidCommandException("Command not valid or a Robot not is defined.");
+            throw new InvalidCommandException("Acceleration command not valid or a Robot not is defined.");
         }
 
         final Coordinate directionRobot = robot.getDirection();
@@ -39,16 +38,13 @@ public class AccelarationMovementType implements MovementType {
         if(directionRobot.equals(Coordinate.N)){
             robot.setY(robot.getY() + 1);
         }
-
-        if(directionRobot.equals(Coordinate.S)){
+        else if(directionRobot.equals(Coordinate.S)){
             robot.setY(robot.getY() - 1);
         }
-
-        if(directionRobot.equals(Coordinate.W)){
+        else if(directionRobot.equals(Coordinate.W)){
             robot.setX(robot.getX() + 1);
         }
-
-        if(directionRobot.equals(Coordinate.E)){
+        else if(directionRobot.equals(Coordinate.E)){
             robot.setX(robot.getX() - 1);
         }
 
@@ -70,6 +66,6 @@ public class AccelarationMovementType implements MovementType {
     }
 
     private boolean isEnabledMoveToEast(Robot robot, Coordinate directionRobot) {
-        return directionRobot.equals(Coordinate.E) && (robot.getY() == 0);
+        return directionRobot.equals(Coordinate.E) && (robot.getX() == 0);
     }
 }

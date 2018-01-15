@@ -42,6 +42,6 @@ public class Robot implements Cloneable{
 
     @Override
     public String toString() {
-        return "Robot{ x=" + x + ", y=" + y +", direction=" + direction + '}';
+        return "(" + x + "," + y +"," + direction + ')';
     }
 }
