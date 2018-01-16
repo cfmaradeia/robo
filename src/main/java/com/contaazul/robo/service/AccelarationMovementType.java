@@ -6,13 +6,17 @@ import com.contaazul.robo.model.Coordinate;
 import com.contaazul.robo.model.Land;
 import com.contaazul.robo.model.Movement;
 import com.contaazul.robo.model.Robot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AccelarationMovementType implements MovementType {
 
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(AccelarationMovementType.class);
+
     @Override
     public Robot execute(final String command, final Robot robot) {
-
+        LOGGER.info("Starting movement :{}", command);
         if((! command.equals(Movement.M.name())) || (robot == null)){
             throw new InvalidCommandException("Acceleration command not valid or a Robot not is defined.");
         }
@@ -48,6 +52,7 @@ public class AccelarationMovementType implements MovementType {
             robot.setX(robot.getX() - 1);
         }
 
+        LOGGER.info("The acceleration movement was successfully performed from direction:{}, x:{}, y:{} ", directionRobot, robot.getX(), robot.getY());
         return robot;
     }
 

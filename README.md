@@ -58,3 +58,12 @@ O projeto deverá ser compilado utilizando o Maven;
 Deverão ser utilizadas apenas as biblioteca do SpringBoot e JUnit;
 O desafio será executado como uma aplicação SpringBoot;
 A interface de comunicação com o robô é REST;
+
+##BUILD
+mvn clean install
+
+##EXECUTAR PROJETO
+mvn spring-boot:run
+
+##Exemplo de request
+curl -X POST http://localhost:8080/rest/mars/{COMANDOS} 

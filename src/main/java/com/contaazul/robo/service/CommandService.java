@@ -23,6 +23,7 @@ public class CommandService {
         }
         final List<String> commands = Arrays.asList(command.split(""));
         validateCommand(commands);
+        LOGGER.info("Split command success: {}", command);
         return commands;
     }
 
@@ -38,5 +39,6 @@ public class CommandService {
         } catch (IllegalArgumentException e) {
             throw new InvalidCommandException("The command is invalid. " + e.getMessage());
         }
+        LOGGER.info("Validate commands success");
     }
 }
